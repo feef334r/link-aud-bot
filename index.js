@@ -54,8 +54,12 @@ let bot;
                             rebuilt_query[k] = v;
                     }
 
-                    if (has_utm) rebuilt_query.from = void 0;
+                    if (has_utm) delete rebuilt_query.from;
                 }
+
+                delete rebuilt_query.search;
+                delete rebuilt_query.path;
+                delete rebuilt_query.href;
 
                 parsed.query = qs.stringify(rebuilt_query);
 
@@ -71,10 +75,6 @@ let bot;
             }
         }], { cache_time: 0 });
     });
-
-    //const { username } = await bot.telegram.getMe();
-    //console.log('Bot initialized with username:', username);
-    //bot.options.username = username;
 
     bot.launch();
 
