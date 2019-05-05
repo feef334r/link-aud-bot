@@ -57,9 +57,9 @@ let bot;
                     if (has_utm) delete rebuilt_query.from;
                 }
 
-                delete rebuilt_query.search;
-                delete rebuilt_query.path;
-                delete rebuilt_query.href;
+                delete parsed.search;
+                delete parsed.path;
+                delete parsed.href;
 
                 parsed.query = qs.stringify(rebuilt_query);
 
