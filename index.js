@@ -46,10 +46,15 @@ let bot;
                     rebuilt_query = pick(queries, '__biz,mid,idx,sn'.split(','));
                 } else {
                     // Generic
+                    let has_utm = false;
                     for (let [k, v] of Object.entries(queries)) {
-                        if (!/^utm_/.test(v))
+                        if (/^utm_/.test(k)) {
+                            has_utm = true;
+                        } else
                             rebuilt_query[k] = v;
                     }
+
+                    if (has_utm) rebuilt_query.from = void 0;
                 }
 
                 parsed.query = qs.stringify(rebuilt_query);
