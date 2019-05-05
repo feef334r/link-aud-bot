@@ -13,7 +13,7 @@ let bot;
 
 {
     let agent;
-    if (process.env.SOCKS_HOST.length) {
+    if (process.env.SOCKS_HOST && process.env.SOCKS_HOST.length) {
         const SocksAgent = require('socks5-https-client/lib/Agent');
         agent = new SocksAgent({
             socksHost: process.env.SOCKS_HOST,
